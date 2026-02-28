@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  {{ content_for_header }}
+  {{ 'custom-style.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+  
+  <div id="quick-popup" class="popup-overlay">
+    <div class="modal-box">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="{{ 'custom-script.js' | asset_url }}" defer></script>
+</body>
+</html>
