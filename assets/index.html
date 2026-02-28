@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PureCeylon Demo</title>
+    <link rel="stylesheet" href="assets/custom-style.css">
+    <style>
+        /* Demo එක නිසා background images මෙතනින් දාමු */
+        .masks-side { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1590732487832-7fa257731727?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); }
+        .carvings-side { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1611003228941-98a51a6bc127?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); }
+    </style>
+</head>
+<body>
+
+    <section class="split-wrapper">
+        <div class="split-side masks-side" onclick="demoPopup('Masks')">
+            <div class="overlay-text">
+                <h2>Wood Masks</h2>
+                <p>Click to see animation</p>
+            </div>
+        </div>
+        <div class="split-side carvings-side" onclick="demoPopup('Carvings')">
+            <div class="overlay-text">
+                <h2>Wood Carvings</h2>
+                <p>Click to see animation</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="quick-popup" class="popup-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        function demoPopup(category) {
+            const modal = document.getElementById('quick-popup');
+            const content = document.getElementById('modal-body');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.classList.add('active'); }, 10);
+
+            content.innerHTML = `
+                <h2 style="color:black">${category} Category</h2>
+                <p style="color:black">This is how your items will pop up with animation!</p>
+                <div style="display:flex; gap:10px; margin-top:20px;">
+                    <div style="background:#ddd; padding:20px; border-radius:10px; color:black">Item 1</div>
+                    <div style="background:#ddd; padding:20px; border-radius:10px; color:black">Item 2</div>
+                </div>
+            `;
+        }
+
+        function closePopup() {
+            const modal = document.getElementById('quick-popup');
+            modal.classList.remove('active');
+            setTimeout(() => { modal.style.display = 'none'; }, 500);
+        }
+    </script>
+</body>
+</html>
